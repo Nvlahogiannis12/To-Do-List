@@ -3,19 +3,22 @@ let tasks = []
 
 //add on click event listener
 document.getElementById('addTaskBtn').addEventListener('click', function(){
-    //Get Value of the input box and store in a variable called task input
-    let taskInput = document.getElementById('taskInput').value
-
-    //Check if taskInput has value
-    if (taskInput){
-        tasks.push(taskInput)
-
-        document.getElementById('taskInput').value = ''
-
-        displayTasks()
-    }
+    addingTask();
 })
 
+function addingTask(){
+//Get Value of the input box and store in a variable called task input
+let taskInput = document.getElementById('taskInput').value
+
+//Check if taskInput has value
+if (taskInput){
+    tasks.push(taskInput)
+
+    document.getElementById('taskInput').value = ''
+
+    displayTasks()
+}
+}
 //function to display tasks in a list
 function displayTasks() {
     let taskList = document.getElementById('taskList')
@@ -41,8 +44,14 @@ function removeTask(index){
 
     displayTasks()
 }
-document.getElementById('clearTasksBtn').addEventListener('click', function(){
+document.getElementById('clearTaskBtn').addEventListener('click', function(){
     tasks = []
     displayTasks()
 })
 
+window.addEventListener('keydown', (event) => {
+    if(event.key === "Enter"){
+addingTask()
+    }
+
+})
