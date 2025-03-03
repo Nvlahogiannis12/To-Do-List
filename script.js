@@ -38,7 +38,11 @@ function displayTasks() {
 
        taskList.appendChild(li)
     })
+
+       
+       document.getElementById('taskAmount').innerText = `Tasks: ${tasks.length}`
 }
+
 function removeTask(index){
     tasks.splice(index, 1)
 
